@@ -29,6 +29,7 @@ class MedalResource extends Resource
                 Forms\Components\TextInput::make('bronze'),
                 Forms\Components\TextInput::make('silver'),
                 Forms\Components\TextInput::make('gold'),
+                Forms\Components\TextInput::make('total'),
             ]);
     }
 
@@ -40,6 +41,7 @@ class MedalResource extends Resource
                 Tables\Columns\TextColumn::make('bronze'),
                 Tables\Columns\TextColumn::make('silver'),
                 Tables\Columns\TextColumn::make('gold'),
+                Tables\Columns\TextColumn::make('total'),
             ])
             ->filters([
                 //
