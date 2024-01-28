@@ -16,20 +16,10 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
-        $makeUserCommand = new MakeUserCommand();
-        $reflector = new \ReflectionObject($makeUserCommand);
-
-        $getUserModel = $reflector->getMethod('getUserModel');
-        $getUserModel->setAccessible(true);
-        $getUserModel->invoke($makeUserCommand)::create([
-            'name' => 'Administrator',
-            'email' => env('FILAMENT_USER_EMAIL', 'Administrator'),
-            'password' => Hash::make(env('FILAMENT_USER_PASSWORD', 'password')),
+        \App\Models\User::factory()->create([
+            'name' => env('FILAMENT_USER_NAME', 'Test User'),
+            'email' => env('FILAMENT_USER_EMAIL', 'test@example.com'),
+            'password' => env('FILAMENT_USER_PASSWORD', 'password'),
         ]);
 
         $this->call([
