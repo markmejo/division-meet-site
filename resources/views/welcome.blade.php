@@ -23,7 +23,7 @@
                 <div class="flex flex-grow justify-between">
                     <!-- Logo -->
                     <div class="flex shrink-0 items-center">
-                        <a href="{{ route('dashboard') }}" wire:navigate
+                        <a href="{{ url('/') }}" wire:navigate
                             class="flex-none text-xl font-semibold text-white">
                             Division Meet 2024
                         </a>
