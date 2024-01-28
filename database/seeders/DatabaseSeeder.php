@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->create([
             'name' => env('FILAMENT_USER_NAME', 'Test User'),
             'email' => env('FILAMENT_USER_EMAIL', 'test@example.com'),
-            'password' => env('FILAMENT_USER_PASSWORD', 'password'),
+            'password' => Hash::make(env('FILAMENT_USER_PASSWORD', 'password')),
         ]);
 
         $this->call([
