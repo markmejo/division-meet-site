@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Medal Table | {{ config('app.name') }}</title>
+    <title>{{ $municipality->name }} Medalists | {{ config('app.name') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net" />
@@ -34,9 +34,9 @@
                         <x-nav-link :href="url('/')" :active="request()->is('/')" wire:navigate>
                             {{ __('Home') }}
                         </x-nav-link>
-                        <!-- <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
+                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                             {{ __('Venues') }}
-                        </x-nav-link> -->
+                        </x-nav-link>
                     </div>
                 </div>
 
@@ -67,20 +67,26 @@
         </div>
     </nav>
 
-    <div class="mx-auto max-w-4xl space-y-6 py-6 sm:px-3 lg:px-8">
+    <div class="mx-auto max-w-4xl py-6 sm:px-3 lg:px-8">
         <div class="text-center text-gray-900">Please like and share our Facebook page: <a
                 href="https://www.facebook.com/profile.php?id=100090531946366" target="_blank"
                 class="block font-semibold uppercase text-red-600 underline md:inline">Dasig Nasipit Tourism</a></div>
 
-        <div class="flex justify-center">
+        <div class="flex justify-center mt-6">
             <img src="{{ asset('images/division-meet-banner.webp') }}" alt="" class="h-auto w-64">
         </div>
 
-        <div class="text-center">
-            <p class="text-gray-500">Rankings are sorted by Gold medals. </p>
+        <div class="text-center mt-6">
+            <p class="text-gray-500 text-2xl font-semibold uppercase">{{ $municipality->name }}</p>
         </div>
 
-        <div class="flex flex-col border border-gray-200 bg-white shadow-sm sm:rounded-lg">
+        <a href="/">
+            <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-red-600 text-white hover:bg-red-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                Return to medal table
+            </button>
+        </a>
+
+        <div class="flex mt-2 flex-col border border-gray-200 bg-white shadow-sm sm:rounded-lg">
             <div class="-m-1.5 overflow-x-auto">
                 <div class="inline-block min-w-full p-1.5 align-middle">
                     <div class="overflow-hidden">
@@ -89,50 +95,27 @@
                                 <tr>
                                     <th scope="col"
                                         class="px-3 py-2 text-center text-xs font-medium uppercase text-gray-500">
-                                        Rank</th>
+                                        Event</th>
                                     <th scope="col"
                                         class="sticky left-0 px-3 py-2 text-center text-xs font-medium uppercase text-gray-500">
-                                        Municipality
-                                    </th>
+                                        Player</th>
                                     <th scope="col"
                                         class="px-3 py-2 text-center text-xs font-medium uppercase text-gray-500">
-                                        Bronze</th>
-                                    <th scope="col"
-                                        class="px-3 py-2 text-center text-xs font-medium uppercase text-gray-500">
-                                        Silver
-                                    </th>
-                                    <th scope="col"
-                                        class="px-3 py-2 text-center text-xs font-medium uppercase text-gray-500">
-                                        Gold
-                                    </th>
-                                    <th scope="col"
-                                        class="px-3 py-2 text-center text-xs font-medium uppercase text-gray-500">
-                                        Total
-                                    </th>
+                                        Medal</th>
                                 </tr>
                             </thead>
                             <tbody class="dark:divide-gray-700 divide-y divide-gray-200">
-                                @foreach (\App\Models\Medal::orderByDesc('gold')->orderByDesc('silver')->orderByDesc('bronze')->orderByRaw('CASE WHEN gold = 0 AND silver = 0 THEN bronze WHEN gold = 0 THEN silver ELSE 0 END DESC')->get() as $medal)
+                                @foreach ($municipality->winners as $winner)
                                     <tr class="dark:hover:bg-gray-700 hover:bg-gray-100">
                                         <td
-                                            class="dark:text-gray-200 whitespace-nowrap px-3 py-2 text-center text-sm text-gray-800">
-                                            {{ $loop->iteration }}</td>
-                                        <td
                                             class="dark:text-gray-200 sticky left-0 whitespace-nowrap px-3 py-2 text-center text-sm font-medium text-gray-800">
-                                            <a href="{{ route('municipalities.medalists.index', $medal->municipality) }}" class="text-red-600 hover:text-red-500 opacity-90">{{ $medal->municipality->name }}</a>
-                                        </td>
+                                            {{ $winner->event }}</td>
                                         <td
                                             class="dark:text-gray-200 whitespace-nowrap px-3 py-2 text-center text-sm text-gray-800">
-                                            {{ $medal->bronze }}</td>
+                                            {{ $winner->player }}</td>
                                         <td
                                             class="dark:text-gray-200 whitespace-nowrap px-3 py-2 text-center text-sm text-gray-800">
-                                            {{ $medal->silver }}</td>
-                                        <td class="whitespace-nowrap px-3 py-2 text-center text-sm text-gray-800">
-                                            {{ $medal->gold }}
-                                        </td>
-                                        <td class="whitespace-nowrap px-3 py-2 text-center text-sm text-gray-800">
-                                            {{ $medal->total }}
-                                        </td>
+                                            {{ $winner->medal }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             'name' => env('FILAMENT_USER_NAME', 'Test User'),
             'email' => env('FILAMENT_USER_EMAIL', 'test@example.com'),
             'password' => Hash::make(env('FILAMENT_USER_PASSWORD', 'password')),
+            'email_verified_at' => now(),
         ]);
 
         $this->call([

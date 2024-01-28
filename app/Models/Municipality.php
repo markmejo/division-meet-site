@@ -13,4 +13,9 @@ class Municipality extends Model
     {
         return $this->hasOne(Medal::class);
     }
+
+    public function winners()
+    {
+        return $this->hasMany(Winner::class);
+    }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\WinnerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,5 +23,7 @@ Route::view('dashboard', 'dashboard')
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
+
+Route::resource('municipalities.medalists', WinnerController::class);
 
 require __DIR__.'/auth.php';
