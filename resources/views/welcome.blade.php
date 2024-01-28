@@ -76,7 +76,9 @@
             <img src="{{ asset('images/division-meet-banner.webp') }}" alt="" class="h-auto w-64">
         </div>
 
-        <p class="text-gray-500">Rankings are sorted by Gold medals. </p>
+        <div class="text-center">
+            <p class="text-gray-500">Rankings are sorted by Gold medals. </p>
+        </div>
 
         <div class="flex flex-col border border-gray-200 bg-white shadow-sm sm:rounded-lg">
             <div class="-m-1.5 overflow-x-auto">
@@ -109,7 +111,7 @@
                                 </tr>
                             </thead>
                             <tbody class="dark:divide-gray-700 divide-y divide-gray-200">
-                                @foreach (\App\Models\Medal::orderBy('gold', 'DESC')->get() as $medal)
+                                @foreach (\App\Models\Medal::orderBy('gold', 'DESC')->orderBy('silver', 'DESC')->orderBy('bronze')->get() as $medal)
                                     <tr class="dark:hover:bg-gray-700 hover:bg-gray-100">
                                         <td
                                             class="dark:text-gray-200 whitespace-nowrap px-3 py-2 text-center text-sm text-gray-800">
