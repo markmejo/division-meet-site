@@ -43,6 +43,7 @@ class MedalResource extends Resource
                 Tables\Columns\TextColumn::make('gold'),
                 Tables\Columns\TextColumn::make('total'),
             ])
+            ->defaultSort('gold', 'desc')
             ->filters([
                 //
             ])
