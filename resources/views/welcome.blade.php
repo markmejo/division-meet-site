@@ -89,25 +89,25 @@
                             <thead>
                                 <tr>
                                     <th scope="col"
-                                        class="px-3 py-2 text-center text-xs font-medium uppercase text-gray-500">
+                                        class="px-3 py-2 text-center text-xs md:text-sm font-medium uppercase text-gray-500">
                                         Rank</th>
                                     <th scope="col"
-                                        class="sticky left-0 px-3 py-2 text-center text-xs font-medium uppercase text-gray-500">
+                                        class="sticky left-0 px-3 py-2 text-center text-xs md:text-sm font-medium uppercase text-gray-500">
                                         Municipality
                                     </th>
                                     <th scope="col"
-                                        class="px-3 py-2 text-center text-xs font-medium uppercase text-gray-500">
+                                        class="px-3 py-2 text-center text-xs md:text-sm font-medium uppercase text-gray-500">
                                         Bronze</th>
                                     <th scope="col"
-                                        class="px-3 py-2 text-center text-xs font-medium uppercase text-gray-500">
+                                        class="px-3 py-2 text-center text-xs md:text-sm font-medium uppercase text-gray-500">
                                         Silver
                                     </th>
                                     <th scope="col"
-                                        class="px-3 py-2 text-center text-xs font-medium uppercase text-gray-500">
+                                        class="px-3 py-2 text-center text-xs md:text-sm font-medium uppercase text-gray-500">
                                         Gold
                                     </th>
                                     <th scope="col"
-                                        class="px-3 py-2 text-center text-xs font-medium uppercase text-gray-500">
+                                        class="px-3 py-2 text-center text-xs md:text-sm font-medium uppercase text-gray-500">
                                         Total
                                     </th>
                                 </tr>
@@ -116,22 +116,22 @@
                                 @foreach (\App\Models\Medal::orderByDesc('gold')->orderByDesc('silver')->orderByDesc('bronze')->orderByRaw('CASE WHEN gold = 0 AND silver = 0 THEN bronze WHEN gold = 0 THEN silver ELSE 0 END DESC')->get() as $medal)
                                     <tr class="dark:hover:bg-gray-700 hover:bg-gray-100">
                                         <td
-                                            class="dark:text-gray-200 whitespace-nowrap px-3 py-2 text-center text-sm text-gray-800">
+                                            class="dark:text-gray-200 whitespace-nowrap px-3 py-2 text-center text-sm md:text-base text-gray-800">
                                             {{ $loop->iteration }}</td>
                                         <td
-                                            class="dark:text-gray-200 sticky left-0 whitespace-nowrap px-3 py-2 text-center text-sm font-medium text-gray-800">
+                                            class="dark:text-gray-200 sticky left-0 whitespace-nowrap px-3 py-2 text-center md:text-base text-sm font-medium text-gray-800">
                                             <a href="{{ route('municipalities.medalists.index', $medal->municipality) }}" class="text-red-600 hover:text-red-500 opacity-90">{{ $medal->municipality->name }}</a>
                                         </td>
                                         <td
-                                            class="dark:text-gray-200 whitespace-nowrap px-3 py-2 text-center text-sm text-gray-800">
+                                            class="dark:text-gray-200 whitespace-nowrap px-3 py-2 text-center text-sm md:text-base text-gray-800">
                                             {{ $medal->bronze }}</td>
                                         <td
-                                            class="dark:text-gray-200 whitespace-nowrap px-3 py-2 text-center text-sm text-gray-800">
+                                            class="dark:text-gray-200 whitespace-nowrap px-3 py-2 text-center text-sm md:text-base text-gray-800">
                                             {{ $medal->silver }}</td>
-                                        <td class="whitespace-nowrap px-3 py-2 text-center text-sm text-gray-800">
+                                        <td class="whitespace-nowrap px-3 py-2 text-center text-sm md:text-base text-gray-800">
                                             {{ $medal->gold }}
                                         </td>
-                                        <td class="whitespace-nowrap px-3 py-2 text-center text-sm text-gray-800">
+                                        <td class="whitespace-nowrap px-3 py-2 text-center text-sm md:text-base text-gray-800">
                                             {{ $medal->total }}
                                         </td>
                                     </tr>

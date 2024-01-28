@@ -76,7 +76,7 @@
             <img src="{{ asset('images/division-meet-banner.webp') }}" alt="" class="h-auto w-64">
         </div>
 
-        <div class="text-center mt-6">
+        <div class="text-center my-6">
             <p class="text-gray-800 text-2xl font-semibold uppercase">{{ $municipality->name }} Medalists</p>
         </div>
 
