@@ -78,6 +78,7 @@
 
         <div class="text-center">
             <p class="text-gray-500">Rankings are sorted by Gold medals. </p>
+            <p class="text-gray-500">Click a municipality name to view medalists.</p>
         </div>
 
         <div class="flex flex-col border border-gray-200 bg-white shadow-sm sm:rounded-lg">

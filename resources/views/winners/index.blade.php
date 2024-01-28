@@ -77,7 +77,7 @@
         </div>
 
         <div class="text-center mt-6">
-            <p class="text-gray-500 text-2xl font-semibold uppercase">{{ $municipality->name }}</p>
+            <p class="text-gray-800 text-2xl font-semibold uppercase">{{ $municipality->name }} Medalists</p>
         </div>
 
         <a href="/">
