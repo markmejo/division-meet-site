@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Municipality extends Model
 {
     use HasFactory;
+
+    public function medal()
+    {
+        return $this->hasOne(Medal::class);
+    }
 }
