@@ -76,6 +76,8 @@
             <img src="{{ asset('images/division-meet-banner.webp') }}" alt="" class="h-auto w-64">
         </div>
 
+        <p class="text-gray-500">Rankings are sorted by Gold medals. </p>
+
         <div class="flex flex-col border border-gray-200 bg-white shadow-sm sm:rounded-lg">
             <div class="-m-1.5 overflow-x-auto">
                 <div class="inline-block min-w-full p-1.5 align-middle">
