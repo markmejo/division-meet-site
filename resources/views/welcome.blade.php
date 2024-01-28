@@ -107,7 +107,7 @@
                                 </tr>
                             </thead>
                             <tbody class="dark:divide-gray-700 divide-y divide-gray-200">
-                                @foreach (\App\Models\Medal::orderBy('total', 'DESC')->get() as $medal)
+                                @foreach (\App\Models\Medal::orderBy('gold', 'DESC')->get() as $medal)
                                     <tr class="dark:hover:bg-gray-700 hover:bg-gray-100">
                                         <td
                                             class="dark:text-gray-200 whitespace-nowrap px-3 py-2 text-center text-sm text-gray-800">
