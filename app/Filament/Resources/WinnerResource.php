@@ -6,7 +6,6 @@ use App\Filament\Imports\WinnerImporter;
 use App\Filament\Resources\WinnerResource\Pages;
 use App\Filament\Resources\WinnerResource\RelationManagers;
 use App\Models\Winner;
-use Filament\Actions\ImportAction;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -48,10 +47,6 @@ class WinnerResource extends Resource
             ])
             ->filters([
                 //
-            ])
-            ->headerActions([
-                Tables\Actions\ImportAction::make()
-                    ->importer(WinnerImporter::class),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
